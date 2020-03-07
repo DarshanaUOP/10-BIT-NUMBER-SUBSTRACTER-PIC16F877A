@@ -1,0 +1,3 @@
+build/default/production/10BITNUMBRSUBSTRACT.o:  \
+	C:/Users/acer/MPLABXProjects/10_BIT_NUMBER_SUBSTRACTER.X/10BITNUMBRSUBSTRACT.asm  \
+

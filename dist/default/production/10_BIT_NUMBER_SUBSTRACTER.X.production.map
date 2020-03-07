@@ -1,0 +1,126 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Mon Mar 19 20:22:36 2018
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000216
+                   .cinit    romdata   0x00010b    program   0x000004
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x00010c      
+            269 out of 8454 program addresses used, program memory utilization is 3%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+               BEFORE_END   0x000032    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+             CHECK_POIT_0   0x000064    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+             CHECK_POIT_1   0x000061    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+             CHECK_POIT_2   0x00005e    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+              DELAY_50_MS   0x0000e6    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+             ENABLE_PULSE   0x0000e2    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                    END_2   0x000094    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                    END_3   0x00005d    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                  FIND_K0   0x000058    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                  FIND_K1   0x000053    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                  FIND_K2   0x00004e    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                GO_BANK_0   0x0000d6    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                GO_BANK_1   0x0000d9    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                GO_BANK_2   0x0000dc    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                GO_BANK_3   0x0000df    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+            INITIALIZE_IC   0x0000ca    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+           INITIALIZE_LCD   0x000095    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+               K0_MIN_TEN   0x00006e    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+              K0_PLUS_ONE   0x000067    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+               K1_MIN_TEN   0x000079    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+              K1_PLUS_ONE   0x000072    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+               K2_MIN_TEN   0x000084    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+              K2_PLUS_ONE   0x00007d    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+               K3_MIN_TEN   0x000091    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+              K3_PLUS_ONE   0x000088    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+         K_VALUES_TO_ZERO   0x00001a    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+              LIBRARY_ONE   0x000036    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+            LIBRARY_THREE   0x000044    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+              LIBRARY_TWO   0x00003d    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+          MAKE_LCD_NUMBER   0x000101    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                     Main   0x000001    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+               PRINT_CHAR   0x000103    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+       PROCESS_HIGH_VALUE   0x000023    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+      PROCESS_LOWER_VALUE   0x00004b    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                SUBSTRACT   0x000009    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                       UP   0x000006    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                     WAIT   0x000106    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+             dataSendMode   0x0000a1    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+             displayClear   0x0000ae    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+          instructionMode   0x00009d    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+          setDisplayOnOff   0x0000a9    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+           setEntryModule   0x0000b4    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+             setFunctions   0x0000a3    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+        set_CGRAM_address   0x0000b9    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+set_DDRAM_address_to_line1   0x0000be    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+set_DDRAM_address_to_line2   0x0000c4    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+              writeOnDisp   0x0000e9    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+             writeOnDisp1   0x0000f4    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     Main   0x000001    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                       UP   0x000006    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                SUBSTRACT   0x000009    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+         K_VALUES_TO_ZERO   0x00001a    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+       PROCESS_HIGH_VALUE   0x000023    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+               BEFORE_END   0x000032    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+              LIBRARY_ONE   0x000036    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+              LIBRARY_TWO   0x00003d    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+            LIBRARY_THREE   0x000044    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+      PROCESS_LOWER_VALUE   0x00004b    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                  FIND_K2   0x00004e    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                  FIND_K1   0x000053    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                  FIND_K0   0x000058    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                    END_3   0x00005d    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+             CHECK_POIT_2   0x00005e    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+             CHECK_POIT_1   0x000061    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+             CHECK_POIT_0   0x000064    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+              K0_PLUS_ONE   0x000067    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+               K0_MIN_TEN   0x00006e    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+              K1_PLUS_ONE   0x000072    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+               K1_MIN_TEN   0x000079    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+              K2_PLUS_ONE   0x00007d    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+               K2_MIN_TEN   0x000084    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+              K3_PLUS_ONE   0x000088    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+               K3_MIN_TEN   0x000091    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                    END_2   0x000094    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+           INITIALIZE_LCD   0x000095    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+          instructionMode   0x00009d    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+             dataSendMode   0x0000a1    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+             setFunctions   0x0000a3    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+          setDisplayOnOff   0x0000a9    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+             displayClear   0x0000ae    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+           setEntryModule   0x0000b4    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+        set_CGRAM_address   0x0000b9    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+set_DDRAM_address_to_line1   0x0000be    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+set_DDRAM_address_to_line2   0x0000c4    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+            INITIALIZE_IC   0x0000ca    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                GO_BANK_0   0x0000d6    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                GO_BANK_1   0x0000d9    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                GO_BANK_2   0x0000dc    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                GO_BANK_3   0x0000df    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+             ENABLE_PULSE   0x0000e2    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+              DELAY_50_MS   0x0000e6    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+              writeOnDisp   0x0000e9    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+             writeOnDisp1   0x0000f4    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+          MAKE_LCD_NUMBER   0x000101    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+               PRINT_CHAR   0x000103    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+                     WAIT   0x000106    program     static C:\Users\acer\MPLABXProjects\10_BIT_NUMBER_SUBSTRACTER.X\10BITNUMBRSUBSTRACT.asm
+
+

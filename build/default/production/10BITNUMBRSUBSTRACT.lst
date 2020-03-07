@@ -1,0 +1,1161 @@
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 ;Author: DarshanaAriyarathna || darshana.uop@gmail.com || +94774901245
+Warning[205]: Found directive in column 1. (processor)
+                      00002 processor       16f877a                 ;Initialize the processor
+                      00003 #include        <p16f877a.inc>          ;Include library
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Sep 19 2017
+                      00005 ;  MPASM PIC16F877A processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2017 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+                      00567         LIST
+                      00004 
+                      00005 
+Warning[205]: Found directive in column 1. (org)
+                      00006 org     0x00;
+Warning[207]: Found label after column 1. (TIMER1)
+  00000020            00007     TIMER1  EQU 0x20
+Warning[207]: Found label after column 1. (TIMER2)
+  00000021            00008     TIMER2  EQU 0x21
+Warning[207]: Found label after column 1. (DISP)
+  00000022            00009     DISP    EQU 0x22
+                      00010     
+Warning[207]: Found label after column 1. (K3)
+  00000023            00011     K3      EQU 0x23
+Warning[207]: Found label after column 1. (K2)
+  00000024            00012     K2      EQU 0x24
+Warning[207]: Found label after column 1. (K1)
+  00000025            00013     K1      EQU 0x25
+Warning[207]: Found label after column 1. (K0)
+  00000026            00014     K0      EQU 0x26
+                      00015 
+Warning[207]: Found label after column 1. (HIGH_BIT_COPPY)
+  00000027            00016     HIGH_BIT_COPPY      EQU 0x27
+Warning[207]: Found label after column 1. (LOW_BIT_COPPY)
+  00000028            00017     LOW_BIT_COPPY       EQU 0x28
+Warning[207]: Found label after column 1. (NEWS)
+  00000029            00018     NEWS    EQU 0x29
+                      00019     
+Warning[207]: Found label after column 1. (NORTH_H)
+  0000002A            00020    NORTH_H EQU  0x2A
+Warning[207]: Found label after column 1. (NORTH_L)
+  0000002B            00021    NORTH_L EQU  0x2B
+                      00022    
+Warning[207]: Found label after column 1. (NORTH_H_ZERO)
+  00000032            00023    NORTH_H_ZERO EQU     0x32
+Warning[207]: Found label after column 1. (NORTH_L_ZERO)
+  00000033            00024    NORTH_L_ZERO EQU     0x33
+                      00025    
+                      00026    ;NORTH_H_RES EQU     0x32
+                      00027    ;NORTH_L_RES EQU     0x33
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00028    
+                      00029     
+Warning[203]: Found opcode in column 1. (GOTO)
+0000   2???           00030 GOTO    Main
+Warning[207]: Found label after column 1. (Main)
+0001                  00031  Main:
+0001   2???           00032     CALL    INITIALIZE_IC
+0002   2???           00033     CALL    INITIALIZE_LCD
+                      00034     ;CALL    writeOnDisp
+0003   2???           00035     CALL    K_VALUES_TO_ZERO
+0004   2???           00036     CALL    SUBSTRACT
+0005   2???           00037     GOTO    PROCESS_HIGH_VALUE
+Warning[207]: Found label after column 1. (UP)
+0006                  00038     UP
+0006   2???           00039     CALL    writeOnDisp1
+0007   2???           00040     CALL    WAIT
+0008   2???           00041     GOTO    Main
+                      00042     
+Warning[207]: Found label after column 1. (SUBSTRACT)
+0009                  00043     SUBSTRACT
+                      00044     
+0009   3003           00045         MOVLW   b'00000011'
+000A   00AA           00046         MOVWF   NORTH_H
+000B   3000           00047         MOVLW   b'00000000'
+000C   00AB           00048         MOVWF   NORTH_L
+                      00049         
+000D   3000           00050         MOVLW   b'00000000'
+000E   00B2           00051         MOVWF   NORTH_H_ZERO
+000F   30F1           00052         MOVLW   b'11110001'
+0010   00B3           00053         MOVWF   NORTH_L_ZERO
+                      00054         
+0011   0833           00055         MOVF    NORTH_L_ZERO,0
+0012   02AB           00056         SUBWF   NORTH_L,1
+                      00057         
+0013   1903           00058         BTFSC   STATUS,2
+0014   3000           00059             MOVLW   d'0'
+0015   3001           00060             MOVLW   d'1'
+0016   02AA           00061         SUBWF   NORTH_H,1
+                      00062         
+0017   0832           00063         MOVF    NORTH_H_ZERO,0
+0018   02AA           00064         SUBWF   NORTH_H,1
+                      00065         
+                      00066         
+0019   0008           00067     RETURN
+                      00068     
+                      00069     ;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                            ++++++++++++
+Warning[207]: Found label after column 1. (K_VALUES_TO_ZERO)
+001A                  00070     K_VALUES_TO_ZERO
+001A   3000           00071         MOVLW   b'00000000'
+001B   00A3           00072         MOVWF   K3
+                      00073         
+001C   3000           00074         MOVLW   b'00000000'
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+001D   00A4           00075         MOVWF   K2
+                      00076         
+001E   3000           00077         MOVLW   b'00000000'
+001F   00A5           00078         MOVWF   K1
+                      00079         
+0020   3000           00080         MOVLW   b'00000000'
+0021   00A6           00081         MOVWF   K0
+0022   0008           00082     RETURN
+Warning[207]: Found label after column 1. (PROCESS_HIGH_VALUE)
+0023                  00083     PROCESS_HIGH_VALUE
+                      00084         ;THIS VALUES ONLY FOR THIS PROG: TESTING
+                      00085 
+0023   082A           00086         MOVF    NORTH_H,0
+0024   00A7           00087         MOVWF   HIGH_BIT_COPPY
+                      00088         ;MOVLW  d'3'
+                      00089         ;MOVLW  d'30'
+                      00090         
+                      00091         
+0025   3001           00092         MOVLW   b'00000001'
+0026   0227           00093         SUBWF   HIGH_BIT_COPPY,0
+0027   1903           00094         BTFSC   STATUS,2
+0028   2???           00095                 GOTO    LIBRARY_ONE
+0029   3002           00096                 MOVLW   b'00000010'
+002A   0227           00097                 SUBWF   HIGH_BIT_COPPY,0
+                      00098                 
+002B   1903           00099                 BTFSC   STATUS,2
+002C   2???           00100                         GOTO    LIBRARY_TWO
+002D   3003           00101                         MOVLW   b'00000011'
+002E   0227           00102                         SUBWF   HIGH_BIT_COPPY,0
+                      00103                 
+002F   1903           00104                         BTFSC   STATUS,2
+0030   2???           00105                                 GOTO    LIBRARY_THREE
+0031   2???           00106                                 GOTO    BEFORE_END
+Warning[207]: Found label after column 1. (BEFORE_END)
+0032                  00107         BEFORE_END
+                      00108         
+0032   2???           00109         CALL    writeOnDisp
+0033   2???           00110             GOTO    PROCESS_LOWER_VALUE
+0034   2???           00111             GOTO        UP
+                      00112         
+0035   2???           00113     GOTO    Main
+                      00114     ;______________________________
+                      00115     
+Warning[207]: Found label after column 1. (LIBRARY_ONE)
+0036                  00116     LIBRARY_ONE
+                      00117         ;256
+0036   3006           00118         MOVLW   d'6'
+0037   00A6           00119         MOVWF   K0
+                      00120         
+0038   3005           00121         MOVLW   d'5'
+0039   00A5           00122         MOVWF   K1
+                      00123         
+003A   3002           00124         MOVLW   d'2'
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+003B   00A4           00125         MOVWF   K2
+                      00126         
+003C   2???           00127     GOTO    BEFORE_END
+                      00128     ;______________________________
+                      00129     
+Warning[207]: Found label after column 1. (LIBRARY_TWO)
+003D                  00130     LIBRARY_TWO
+                      00131         ;512
+003D   3002           00132         MOVLW   d'2'
+003E   00A6           00133         MOVWF   K0
+                      00134         
+003F   3001           00135         MOVLW   d'1'
+0040   00A5           00136         MOVWF   K1
+                      00137         
+0041   3005           00138         MOVLW   d'5'
+0042   00A4           00139         MOVWF   K2
+                      00140         
+0043   2???           00141     GOTO    BEFORE_END
+                      00142     ;______________________________
+                      00143     
+Warning[207]: Found label after column 1. (LIBRARY_THREE)
+0044                  00144     LIBRARY_THREE
+                      00145         ;768
+0044   3008           00146         MOVLW   d'8'
+0045   00A6           00147         MOVWF   K0
+                      00148         
+0046   3006           00149         MOVLW   d'6'
+0047   00A5           00150         MOVWF   K1
+                      00151         
+0048   3007           00152         MOVLW   d'7'
+0049   00A4           00153         MOVWF   K2
+                      00154         
+004A   2???           00155     GOTO    BEFORE_END
+                      00156     ;______________________________
+                      00157     ;PROCESS_LOWER_VALUE
+                      00158     
+Warning[207]: Found label after column 1. (PROCESS_LOWER_VALUE)
+004B                  00159     PROCESS_LOWER_VALUE
+                      00160     ;IN HERE SET ADRESL VALUE TO LOW_BIT_COPPY
+004B   082B           00161     MOVF        NORTH_L,0
+004C   00A8           00162     MOVWF       LOW_BIT_COPPY
+004D   2???           00163     GOTO    FIND_K2
+Warning[207]: Found label after column 1. (FIND_K2)
+004E                  00164     FIND_K2
+004E   3064           00165         MOVLW   d'100'
+004F   0228           00166         SUBWF   LOW_BIT_COPPY,0
+0050   1803           00167         BTFSC   STATUS,0
+0051   2???           00168             GOTO        CHECK_POIT_2    
+0052   2???           00169             GOTO        FIND_K1         
+                      00170             
+Warning[207]: Found label after column 1. (FIND_K1)
+0053                  00171     FIND_K1
+0053   300A           00172         MOVLW   d'10'
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0054   0228           00173         SUBWF   LOW_BIT_COPPY,0
+0055   1803           00174         BTFSC   STATUS,0
+0056   2???           00175             GOTO        CHECK_POIT_1    
+0057   2???           00176             GOTO        FIND_K0
+                      00177 
+Warning[207]: Found label after column 1. (FIND_K0)
+0058                  00178     FIND_K0
+0058   3001           00179         MOVLW   d'1'
+0059   0228           00180         SUBWF   LOW_BIT_COPPY,0
+005A   1803           00181         BTFSC   STATUS,0
+005B   2???           00182             GOTO        CHECK_POIT_0
+005C   2???           00183             GOTO        END_3
+                      00184             
+Warning[207]: Found label after column 1. (END_3)
+005D                  00185     END_3
+                      00186         ;WHEN EXITING FROM "GOTO END_3" IT IS NOT CALCULATE THAT ONE SO NEEDS TO ADD IT
+                      00187         ;CALL   K0_PLUS_ONE
+005D   2???           00188     GOTO    UP
+                      00189     ;______________________________    
+Warning[207]: Found label after column 1. (CHECK_POIT_2)
+005E                  00190     CHECK_POIT_2
+005E   00A8           00191         MOVWF   LOW_BIT_COPPY
+005F   2???           00192         CALL    K2_PLUS_ONE
+0060   2???           00193     GOTO    FIND_K2
+                      00194     ;______________________________ 
+Warning[207]: Found label after column 1. (CHECK_POIT_1)
+0061                  00195     CHECK_POIT_1
+0061   00A8           00196         MOVWF   LOW_BIT_COPPY
+0062   2???           00197         CALL    K1_PLUS_ONE
+0063   2???           00198     GOTO    FIND_K1
+                      00199     ;______________________________ 
+Warning[207]: Found label after column 1. (CHECK_POIT_0)
+0064                  00200     CHECK_POIT_0
+0064   00A8           00201         MOVWF   LOW_BIT_COPPY
+0065   2???           00202         CALL    K0_PLUS_ONE
+0066   2???           00203     GOTO    FIND_K0
+                      00204     
+                      00205     ;______________________________
+Warning[207]: Found label after column 1. (K0_PLUS_ONE)
+0067                  00206     K0_PLUS_ONE
+0067   3001           00207         MOVLW   d'1'
+0068   07A6           00208         ADDWF   K0,1
+0069   300A           00209         MOVLW   d'10'
+006A   0226           00210         SUBWF   K0,0
+006B   1883           00211         BTFSC   STATUS,1
+006C   2???           00212             GOTO    K0_MIN_TEN
+006D   2???           00213            GOTO    END_2
+                      00214             
+Warning[207]: Found label after column 1. (K0_MIN_TEN)
+006E                  00215             K0_MIN_TEN
+006E   300A           00216                 MOVLW   b'00001010'
+006F   02A6           00217                 SUBWF   K0,1
+0070   2???           00218                 GOTO    K1_PLUS_ONE
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0071   2???           00219                 GOTO    END_2
+                      00220     
+Warning[207]: Found label after column 1. (K1_PLUS_ONE)
+0072                  00221     K1_PLUS_ONE
+0072   3001           00222         MOVLW   d'1'
+0073   07A5           00223         ADDWF   K1,1
+0074   300A           00224         MOVLW   d'10'
+0075   0225           00225         SUBWF   K1,0
+0076   1883           00226         BTFSC   STATUS,1
+0077   2???           00227            GOTO    K1_MIN_TEN
+0078   2???           00228            GOTO    END_2
+                      00229             
+Warning[207]: Found label after column 1. (K1_MIN_TEN)
+0079                  00230             K1_MIN_TEN
+0079   300A           00231                 MOVLW   b'00001010'
+007A   02A5           00232                 SUBWF   K1,1
+007B   2???           00233                 GOTO    K2_PLUS_ONE
+007C   2???           00234                 GOTO    END_2
+                      00235            
+                      00236     
+Warning[207]: Found label after column 1. (K2_PLUS_ONE)
+007D                  00237     K2_PLUS_ONE
+007D   3001           00238         MOVLW   d'1'
+007E   07A4           00239         ADDWF   K2,1
+007F   300A           00240         MOVLW   d'10'
+0080   0224           00241         SUBWF   K2,0
+0081   1883           00242         BTFSC   STATUS,1
+0082   2???           00243            GOTO    K2_MIN_TEN
+0083   2???           00244            GOTO    END_2
+                      00245             
+Warning[207]: Found label after column 1. (K2_MIN_TEN)
+0084                  00246             K2_MIN_TEN
+0084   300A           00247                 MOVLW   b'00001010'
+0085   02A4           00248                 SUBWF   K2,1
+0086   2???           00249                 GOTO    K3_PLUS_ONE
+0087   2???           00250                 GOTO    END_2
+                      00251             
+Warning[207]: Found label after column 1. (K3_PLUS_ONE)
+0088                  00252     K3_PLUS_ONE
+0088   3001           00253         MOVLW   d'1'
+0089   07A3           00254         ADDWF   K3,1
+008A   300A           00255         MOVLW   D'10'
+008B   0223           00256         SUBWF   K3,0
+                      00257         
+008C   0803           00258         MOVF    STATUS,0
+008D   0086           00259         MOVWF   PORTB
+                      00260         
+008E   1883           00261         BTFSC   STATUS,1
+008F   2???           00262             GOTO    K3_MIN_TEN
+0090   2???           00263             GOTO    END_2
+                      00264             
+Warning[207]: Found label after column 1. (K3_MIN_TEN)
+0091                  00265             K3_MIN_TEN
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0091   300A           00266                 MOVLW   b'00001010'
+0092   02A3           00267                 SUBWF   K3,1
+0093   2???           00268                 GOTO    END_2
+                      00269 
+Warning[207]: Found label after column 1. (END_2)
+0094                  00270     END_2
+0094   0008           00271     RETURN
+                      00272     
+                      00273     
+                      00274     ;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                            ++++++++++++
+                      00275     
+                      00276     ;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                            ++++++++++++
+                      00277     ;subroutings_for_INITIALIZE_LCD
+Warning[207]: Found label after column 1. (INITIALIZE_LCD)
+0095                  00278     INITIALIZE_LCD
+0095   2???           00279         CALL    instructionMode
+0096   2???           00280         CALL    setFunctions
+0097   2???           00281         CALL    setDisplayOnOff
+0098   2???           00282         CALL    displayClear
+0099   2???           00283         CALL    setEntryModule
+009A   2???           00284         CALL    set_CGRAM_address
+009B   2???           00285         CALL    set_DDRAM_address_to_line1
+009C   0008           00286     RETURN
+                      00287     ;______________________________________
+                      00288     
+Warning[207]: Found label after column 1. (instructionMode)
+009D                  00289     instructionMode
+009D   3000           00290             MOVLW   b'000'
+009E   0087           00291             MOVWF   PORTC
+009F   2???           00292             CALL    ENABLE_PULSE
+00A0   0008           00293     RETURN
+                      00294     ;______________________________________
+Warning[207]: Found label after column 1. (dataSendMode)
+00A1                  00295     dataSendMode
+                      00296             ;MOVLW   b'11111111'
+                      00297             ;MOVWF   PORTD
+                      00298 
+                      00299             ;MOVLW   b'00001'
+                      00300             ;MOVWF   PORTC
+00A1   1407           00301             BSF     PORTC,0
+                      00302             ;CALL    ENABLE_PULSE
+00A2   0008           00303     RETURN
+                      00304     ;______________________________________
+                      00305     
+Warning[207]: Found label after column 1. (setFunctions)
+00A3                  00306     setFunctions
+00A3   2???           00307         CALL    instructionMode
+00A4   0087           00308         MOVWF   PORTC
+00A5   3038           00309         MOVLW   b'00111000'
+                      00310         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            +
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00311         ;| bit7     | bit6      | bit5      | bit4      | bit3      | bit2      | bit1      | bit0      
+                            |
+                      00312         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            +
+                      00313         ;|      0   |   0       |       1   |   1       |0=1 Line   |0=5x8 Dots |       x   |   x       
+                            |
+                      00314         ;|          |           |           |           |1=2 Line   |1=5x11 Dots|       x   |   x       
+                            |
+                      00315         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            +  
+00A6   0088           00316         MOVWF   PORTD
+00A7   2???           00317         CALL    ENABLE_PULSE
+00A8   0008           00318     RETURN
+                      00319     ;______________________________________
+Warning[207]: Found label after column 1. (setDisplayOnOff)
+00A9                  00320     setDisplayOnOff
+00A9   2???           00321         CALL    instructionMode
+00AA   300F           00322         MOVLW   b'00001111'
+                      00323         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            +
+                      00324         ;| bit7     | bit6      | bit5      | bit4      | bit3      | bit2      | bit1      | bit0      
+                            |
+                      00325         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            +
+                      00326         ;|      0   |   0       |       0   |   0       |       1   |0=DispOff  |0=CurserOff|0=BlinkOff 
+                            |
+                      00327         ;|          |           |           |           |           |1=DispOn   |1=CurserOn |1=BlinkOn  
+                            |
+                      00328         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            +
+00AB   0088           00329         MOVWF   PORTD
+00AC   2???           00330         CALL    ENABLE_PULSE
+00AD   0008           00331     RETURN
+                      00332     ;______________________________________
+Warning[207]: Found label after column 1. (displayClear)
+00AE                  00333     displayClear
+00AE   2???           00334         CALL    instructionMode
+00AF   3001           00335         MOVLW   b'00000001'
+                      00336         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            +
+                      00337         ;| bit7     | bit6      | bit5      | bit4      | bit3      | bit2      | bit1      | bit0      
+                            |
+                      00338         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            +
+                      00339         ;|      0   |   0       |       0   |   0       |       0   |   0       |       0   |   1       
+                            |
+                      00340         ;|          |           |           |           |           |           |           |           
+                            |
+                      00341         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            +
+00B0   0088           00342         MOVWF   PORTD
+00B1   2???           00343         CALL    ENABLE_PULSE
+00B2   2???           00344         CALL    set_DDRAM_address_to_line1
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00B3   0008           00345     RETURN
+                      00346     ;______________________________________
+Warning[207]: Found label after column 1. (setEntryModule)
+00B4                  00347     setEntryModule
+00B4   2???           00348         CALL    instructionMode
+00B5   3006           00349         MOVLW   b'00000110'
+                      00350         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            ----+
+                      00351         ;| bit7     | bit6      | bit5      | bit4      | bit3      | bit2      | bit1      | bit0      
+                                |
+                      00352         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            ----+
+                      00353         ;|      0   |   0       |       0   |   0       |       0   |   1       |0=Decrement|0=EntireShi
+                            ft  |
+                      00354         ;|          |           |           |           |           |           |   Mode    |   off     
+                                |
+                      00355         ;|          |           |           |           |           |           |1=Increment|1=EntireShi
+                            f   |
+                      00356         ;|          |           |           |           |           |           |   Mode    |   on      
+                                |
+                      00357         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            ----+
+00B6   0088           00358         MOVWF   PORTD
+00B7   2???           00359         CALL    ENABLE_PULSE
+00B8   0008           00360     RETURN
+                      00361     
+                      00362     ;______________________________________
+Warning[207]: Found label after column 1. (set_CGRAM_address)
+00B9                  00363     set_CGRAM_address
+00B9   2???           00364         CALL    instructionMode
+00BA   3040           00365         MOVLW   b'01000000'     
+                      00366         ;SET CGRAM ADDRESS
+                      00367         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            +
+                      00368         ;| bit7     | bit6      | bit5      |bit4       | bit3      | bit2      | bit1      | bit0      
+                            |
+                      00369         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            +
+                      00370         ;|      0   |   1       |       AC5 |   AC4     |       AC3 |   AC2     |       AC1 |   AC0     
+                            |
+                      00371         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            +
+                      00372         
+00BB   0088           00373         MOVWF   PORTD
+00BC   2???           00374         CALL    ENABLE_PULSE
+00BD   0008           00375     RETURN
+                      00376     
+                      00377     ;______________________________________
+Warning[207]: Found label after column 1. (set_DDRAM_address_to_line1)
+00BE                  00378     set_DDRAM_address_to_line1
+00BE   2???           00379         CALL    instructionMode
+00BF   3080           00380         MOVLW   b'10000000'     ;SET DDRAM ADDRESS
+                      00381     
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00382         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            +
+                      00383         ;| bit7     | bit6      | bit5      | bit4      | bit3      | bit2      | bit1      | bit0      
+                            |
+                      00384         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            +
+                      00385         ;|      1   |   AC6     |       AC5 |   AC4     |       AC3 |   AC2     |       AC1 |   AC0     
+                            |
+                      00386         ;+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+                            +
+                      00387             ;DDRAM ADDRESS 1ST Line:00H to 27H
+                      00388             ;DDRAM ADDRESS 2ND Line:40H to 67H
+                      00389 
+00C0   0088           00390         MOVWF   PORTD
+00C1   2???           00391         CALL    ENABLE_PULSE
+00C2   2???           00392         CALL    dataSendMode
+00C3   0008           00393     RETURN
+                      00394     ;______________________________________
+Warning[207]: Found label after column 1. (set_DDRAM_address_to_line2)
+00C4                  00395     set_DDRAM_address_to_line2
+00C4   2???           00396         CALL    instructionMode
+00C5   30C0           00397         MOVLW   b'11000000'
+00C6   0088           00398         MOVWF   PORTD
+00C7   2???           00399         CALL    ENABLE_PULSE
+00C8   2???           00400         CALL    dataSendMode
+                      00401 
+00C9   0008           00402     RETURN
+                      00403     ;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                            ++++++++++++
+                      00404     ;subroutings_for_INITIALIZE_IC
+Warning[207]: Found label after column 1. (INITIALIZE_IC)
+00CA                  00405     INITIALIZE_IC
+00CA   2???           00406         CALL    GO_BANK_1
+00CB   3000           00407             MOVLW   b'000'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00CC   0087           00408             MOVWF   TRISC
+00CD   3000           00409             MOVLW   b'00000000'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00CE   0088           00410             MOVWF   TRISD
+00CF   1406           00411             BSF     PORTB,0
+00D0   2???           00412         CALL    GO_BANK_0
+00D1   3000           00413             MOVLW   b'000'
+00D2   0087           00414             MOVWF   PORTC
+                      00415 
+00D3   3000           00416             MOVLW   b'00000000'
+00D4   0088           00417             MOVWF   PORTD
+00D5   0008           00418     RETURN
+                      00419     
+Warning[207]: Found label after column 1. (GO_BANK_0)
+00D6                  00420     GO_BANK_0
+00D6   1283           00421         BCF         STATUS,5
+00D7   1303           00422         BCF         STATUS,6
+00D8   0008           00423     RETURN
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00424     
+Warning[207]: Found label after column 1. (GO_BANK_1)
+00D9                  00425     GO_BANK_1
+00D9   1683           00426         BSF         STATUS,5
+00DA   1303           00427         BCF         STATUS,6
+00DB   0008           00428     RETURN
+                      00429     
+Warning[207]: Found label after column 1. (GO_BANK_2)
+00DC                  00430     GO_BANK_2
+00DC   1283           00431         BCF         STATUS,5
+00DD   1703           00432         BSF         STATUS,6
+00DE   0008           00433     RETURN
+                      00434     
+Warning[207]: Found label after column 1. (GO_BANK_3)
+00DF                  00435     GO_BANK_3
+00DF   1683           00436         BSF         STATUS,5
+00E0   1703           00437         BSF         STATUS,6
+00E1   0008           00438     RETURN
+                      00439     
+Warning[207]: Found label after column 1. (ENABLE_PULSE)
+00E2                  00440     ENABLE_PULSE
+00E2   1507           00441         BSF         PORTC,2
+00E3   2???           00442         CALL    DELAY_50_MS
+00E4   1107           00443         BCF         PORTC,2
+                      00444         ;CALL    DELAY_50_MS
+00E5   0008           00445     RETURN
+                      00446     ;_______________________________________
+Warning[207]: Found label after column 1. (DELAY_50_MS)
+00E6                  00447     DELAY_50_MS
+00E6   0BA0           00448         DECFSZ  TIMER1,1
+00E7   2???           00449         GOTO    DELAY_50_MS
+                      00450         ;DECFSZ TIMER2,1
+                      00451         ;GOTO   DELAY_50_MS
+                      00452         ;MOVLW   b'11111111'
+                      00453         ;movwf   TIMER1
+00E8   0008           00454     RETURN
+                      00455     
+                      00456     ;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                            ++++++++++++
+                      00457     ;subroutings_for_PRINT_IN_LCD
+Warning[207]: Found label after column 1. (writeOnDisp)
+00E9                  00458     writeOnDisp
+00E9   3052           00459         MOVLW   'R'
+00EA   2???           00460         CALL    PRINT_CHAR
+00EB   3055           00461         MOVLW   'U'
+00EC   2???           00462         CALL    PRINT_CHAR
+00ED   304E           00463         MOVLW   'N'
+00EE   2???           00464         CALL    PRINT_CHAR
+00EF   302A           00465         MOVLW   '*'
+00F0   2???           00466         CALL    PRINT_CHAR
+                      00467 
+00F1   302A           00468         MOVLW   '*'
+00F2   2???           00469         CALL    PRINT_CHAR
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE 12
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00470         
+00F3   0008           00471     RETURN
+Warning[207]: Found label after column 1. (writeOnDisp1)
+00F4                  00472     writeOnDisp1
+                      00473         ;CALL   displayClear
+00F4   0823           00474         MOVF    K3,0
+00F5   2???           00475         CALL    MAKE_LCD_NUMBER
+00F6   2???           00476         CALL    PRINT_CHAR
+                      00477         
+00F7   0824           00478         MOVF    K2,0
+00F8   2???           00479         CALL    MAKE_LCD_NUMBER
+00F9   2???           00480         CALL    PRINT_CHAR
+                      00481         
+00FA   0825           00482         MOVF    K1,0
+00FB   2???           00483         CALL    MAKE_LCD_NUMBER
+00FC   2???           00484         CALL    PRINT_CHAR
+                      00485         
+00FD   0826           00486         MOVF    K0,0
+00FE   2???           00487         CALL    MAKE_LCD_NUMBER
+00FF   2???           00488         CALL    PRINT_CHAR
+                      00489         
+                      00490         
+                      00491         
+0100   0008           00492     RETURN
+Warning[207]: Found label after column 1. (MAKE_LCD_NUMBER)
+0101                  00493     MAKE_LCD_NUMBER
+0101   3E30           00494         ADDLW   b'00110000'
+0102   0008           00495     RETURN
+                      00496     
+Warning[207]: Found label after column 1. (PRINT_CHAR)
+0103                  00497     PRINT_CHAR
+0103   0088           00498         MOVWF  PORTD
+0104   2???           00499         CALL    ENABLE_PULSE
+0105   0008           00500     RETURN
+                      00501     
+Warning[207]: Found label after column 1. (WAIT)
+0106                  00502     WAIT
+0106   0BA0           00503         DECFSZ  TIMER1,1
+0107   2???           00504         GOTO    WAIT
+0108   0BA1           00505         DECFSZ  TIMER2,1
+0109   2???           00506         GOTO    WAIT
+010A   0008           00507     RETURN 
+Warning[205]: Found directive in column 1. (END)
+                      00508 END
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE 13
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ADCON0                            0000001F
+ADCON1                            0000009F
+ADCS0                             00000006
+ADCS1                             00000007
+ADCS2                             00000006
+ADDEN                             00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADON                              00000000
+ADRESH                            0000001E
+ADRESL                            0000009E
+BCLIE                             00000003
+BCLIF                             00000003
+BEFORE_END                        00000032
+BF                                00000000
+BRGH                              00000002
+C                                 00000000
+C1INV                             00000004
+C1OUT                             00000006
+C2INV                             00000005
+C2OUT                             00000007
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCP2CON                           0000001D
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCP2X                             00000005
+CCP2Y                             00000004
+CCPR1                             00000015
+CCPR1H                            00000016
+CCPR1L                            00000015
+CCPR2                             0000001B
+CCPR2H                            0000001C
+CCPR2L                            0000001B
+CHECK_POIT_0                      00000064
+CHECK_POIT_1                      00000061
+CHECK_POIT_2                      0000005E
+CHS0                              00000003
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE 14
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CHS1                              00000004
+CHS2                              00000005
+CIS                               00000003
+CKE                               00000006
+CKP                               00000004
+CM0                               00000000
+CM1                               00000001
+CM2                               00000002
+CMCON                             0000009C
+CMIE                              00000006
+CMIF                              00000006
+CREN                              00000004
+CSRC                              00000007
+CVR0                              00000000
+CVR1                              00000001
+CVR2                              00000002
+CVR3                              00000003
+CVRCON                            0000009D
+CVREN                             00000007
+CVROE                             00000006
+CVRR                              00000005
+D                                 00000005
+DATA_ADDRESS                      00000005
+DC                                00000001
+DELAY_50_MS                       000000E6
+DISP                              00000022
+D_A                               00000005
+D_NOT_A                           00000005
+EEADR                             0000010D
+EEADRH                            0000010F
+EECON1                            0000018C
+EECON2                            0000018D
+EEDATA                            0000010C
+EEDATH                            0000010E
+EEIE                              00000004
+EEIF                              00000004
+EEPGD                             00000007
+ENABLE_PULSE                      000000E2
+END_2                             00000094
+END_3                             0000005D
+F                                 00000001
+FERR                              00000002
+FIND_K0                           00000058
+FIND_K1                           00000053
+FIND_K2                           0000004E
+FSR                               00000004
+GCEN                              00000007
+GIE                               00000007
+GO                                00000002
+GO_BANK_0                         000000D6
+GO_BANK_1                         000000D9
+GO_BANK_2                         000000DC
+GO_BANK_3                         000000DF
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE 15
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+GO_DONE                           00000002
+GO_NOT_DONE                       00000002
+HIGH_BIT_COPPY                    00000027
+I2C_DATA                          00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+IBF                               00000007
+IBOV                              00000005
+INDF                              00000000
+INITIALIZE_IC                     000000CA
+INITIALIZE_LCD                    00000095
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+K0                                00000026
+K0_MIN_TEN                        0000006E
+K0_PLUS_ONE                       00000067
+K1                                00000025
+K1_MIN_TEN                        00000079
+K1_PLUS_ONE                       00000072
+K2                                00000024
+K2_MIN_TEN                        00000084
+K2_PLUS_ONE                       0000007D
+K3                                00000023
+K3_MIN_TEN                        00000091
+K3_PLUS_ONE                       00000088
+K_VALUES_TO_ZERO                  0000001A
+LIBRARY_ONE                       00000036
+LIBRARY_THREE                     00000044
+LIBRARY_TWO                       0000003D
+LOW_BIT_COPPY                     00000028
+MAKE_LCD_NUMBER                   00000101
+Main                              00000001
+NEWS                              00000029
+NORTH_H                           0000002A
+NORTH_H_ZERO                      00000032
+NORTH_L                           0000002B
+NORTH_L_ZERO                      00000033
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BO                            00000000
+NOT_BOR                           00000000
+NOT_DONE                          00000002
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RC8                           00000006
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+NOT_TX8                           00000006
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE 16
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+NOT_W                             00000002
+NOT_WRITE                         00000002
+OBF                               00000006
+OERR                              00000001
+OPTION_REG                        00000081
+P                                 00000004
+PCFG0                             00000000
+PCFG1                             00000001
+PCFG2                             00000002
+PCFG3                             00000003
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+PEN                               00000002
+PIE1                              0000008C
+PIE2                              0000008D
+PIR1                              0000000C
+PIR2                              0000000D
+PORTA                             00000005
+PORTB                             00000006
+PORTC                             00000007
+PORTD                             00000008
+PORTE                             00000009
+PR2                               00000092
+PRINT_CHAR                        00000103
+PROCESS_HIGH_VALUE                00000023
+PROCESS_LOWER_VALUE               0000004B
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+PSPIE                             00000007
+PSPIF                             00000007
+PSPMODE                           00000004
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RC0                               00000000
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE 17
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RC1                               00000001
+RC2                               00000002
+RC3                               00000003
+RC4                               00000004
+RC5                               00000005
+RC6                               00000006
+RC7                               00000007
+RC8_9                             00000006
+RC9                               00000006
+RCD8                              00000000
+RCEN                              00000003
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+RD0                               00000000
+RD1                               00000001
+RD2                               00000002
+RD3                               00000003
+RD4                               00000004
+RD5                               00000005
+RD6                               00000006
+RD7                               00000007
+RE0                               00000000
+RE1                               00000001
+RE2                               00000002
+READ_WRITE                        00000002
+RP0                               00000005
+RP1                               00000006
+RSEN                              00000001
+RX9                               00000006
+RX9D                              00000000
+R_NOT_W                           00000002
+R_W                               00000002
+S                                 00000003
+SEN                               00000000
+SMP                               00000007
+SPBRG                             00000099
+SPEN                              00000007
+SREN                              00000005
+SSPADD                            00000093
+SSPBUF                            00000013
+SSPCON                            00000014
+SSPCON2                           00000091
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPOV                             00000006
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE 18
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SSPSTAT                           00000094
+STATUS                            00000003
+SUBSTRACT                         00000009
+SYNC                              00000004
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1INSYNC                          00000002
+T1OSCEN                           00000003
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TIMER1                            00000020
+TIMER2                            00000021
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE 19
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRISC                             00000087
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC3                            00000003
+TRISC4                            00000004
+TRISC5                            00000005
+TRISC6                            00000006
+TRISC7                            00000007
+TRISD                             00000088
+TRISD0                            00000000
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
+TRISD4                            00000004
+TRISD5                            00000005
+TRISD6                            00000006
+TRISD7                            00000007
+TRISE                             00000089
+TRISE0                            00000000
+TRISE1                            00000001
+TRISE2                            00000002
+TRMT                              00000001
+TX8_9                             00000006
+TX9                               00000006
+TX9D                              00000000
+TXD8                              00000000
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+UA                                00000001
+UP                                00000006
+W                                 00000000
+WAIT                              00000106
+WCOL                              00000007
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_BODEN_OFF                        00003FBF
+_BODEN_ON                         00003FFF
+_BOREN_OFF                        00003FBF
+_BOREN_ON                         00003FFF
+_CONFIG                           00002007
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003EFF
+_CP_ALL                           00001FFF
+_CP_OFF                           00003FFF
+_CP_ON                            00001FFF
+_DEBUG_OFF                        00003FFF
+_DEBUG_ON                         000037FF
+MPASM 5.76           10BITNUMBRSUBSTRACT.ASM   3-19-2018  20:22:35         PAGE 20
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_LVP_OFF                          00003F7F
+_LVP_ON                           00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_WRT_1FOURTH                      00003BFF
+_WRT_256                          00003DFF
+_WRT_HALF                         000039FF
+_WRT_OFF                          00003FFF
+_XT_OSC                           00003FFD
+__16F877A                         00000001
+dataSendMode                      000000A1
+displayClear                      000000AE
+instructionMode                   0000009D
+setDisplayOnOff                   000000A9
+setEntryModule                    000000B4
+setFunctions                      000000A3
+set_CGRAM_address                 000000B9
+set_DDRAM_address_to_line1        000000BE
+set_DDRAM_address_to_line2        000000C4
+writeOnDisp                       000000E9
+writeOnDisp1                      000000F4
+
+Errors   :     0
+Warnings :    66 reported,     0 suppressed
+Messages :     2 reported,     0 suppressed
+
+
