@@ -6,3 +6,8 @@ This is a 10 bit number substractor for PIC16F877A. <br>
 <p>
 	I have coded a possible way for overcome that problem in this repository. 
 </p>
+
+### LINKS
+* [Proteus simulation file](https://github.com/DarshanaUOP/10-BIT-NUMBER-SUBSTRACTER-PIC16F877A/raw/master/10BIT_NUMBER_SUBTRACT.pdsprj)
+* [.asm file (assembly code)](https://github.com/DarshanaUOP/10-BIT-NUMBER-SUBSTRACTER-PIC16F877A/blob/master/10BITNUMBRSUBSTRACT.asm)
+* [.hex file](https://github.com/DarshanaUOP/10-BIT-NUMBER-SUBSTRACTER-PIC16F877A/blob/master/dist/default/production/10_BIT_NUMBER_SUBSTRACTER.X.production.hex)
